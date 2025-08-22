@@ -44,7 +44,7 @@ const ServicesSlider = () => {
   const nextRef = useRef(null);
 
   return (
-    <section className="py-16 px-4 md:px-8 bg-gradient-to-b from-white to-gray-50">
+    <section className="py-16 px-4 md:px-8 bg-gradient-to-b from-blue-50 to-blue-100">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: -30 }}
@@ -53,9 +53,9 @@ const ServicesSlider = () => {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Our <span className="text-[#C2DB62]">Services</span>
+            Our <span className="text-blue-600">Services</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-700 max-w-3xl mx-auto">
             We offer comprehensive digital solutions to help your business thrive in the digital landscape
           </p>
         </motion.div>
@@ -94,7 +94,7 @@ const ServicesSlider = () => {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.5 }}
-                  className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100"
+                  className="bg-white rounded-2xl shadow-xl overflow-hidden border border-blue-100"
                 >
                   <div className="grid md:grid-cols-2 gap-0">
                     {/* Image Section */}
@@ -104,8 +104,8 @@ const ServicesSlider = () => {
                         alt={service.title}
                         className="w-full h-full object-cover min-h-[350px]"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                        <button className="px-6 py-2 bg-[#C2DB62] text-gray-900 font-semibold rounded-full">
+                      <div className="absolute inset-0 bg-gradient-to-t from-blue-900/70 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                        <button className="px-6 py-2 bg-blue-600 text-white font-semibold rounded-full hover:bg-blue-700 transition-colors">
                           Learn More
                         </button>
                       </div>
@@ -113,7 +113,7 @@ const ServicesSlider = () => {
 
                     {/* Content Section */}
                     <div className="p-8 flex flex-col justify-center">
-                      <div className="w-16 h-16 rounded-full bg-[#C2DB62] bg-opacity-20 flex items-center justify-center text-[#C2DB62] mb-6">
+                      <div className="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 mb-6">
                         {service.icon}
                       </div>
                       
@@ -130,7 +130,7 @@ const ServicesSlider = () => {
                         <ul className="space-y-2">
                           {service.features.map((feature, i) => (
                             <li key={i} className="flex items-center">
-                              <div className="w-2 h-2 bg-[#C2DB62] rounded-full mr-3"></div>
+                              <div className="w-2 h-2 bg-blue-500 rounded-full mr-3"></div>
                               <span className="text-gray-600">{feature}</span>
                             </li>
                           ))}
@@ -138,10 +138,10 @@ const ServicesSlider = () => {
                       </div>
 
                       <div className="flex space-x-4">
-                        <button className="px-6 py-3 bg-[#C2DB62] text-gray-900 font-semibold rounded-lg hover:bg-[#b0cc47] transition-colors duration-300">
+                        <button className="px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors duration-300">
                           Get Started
                         </button>
-                        <button className="px-6 py-3 border border-gray-300 text-gray-700 font-semibold rounded-lg hover:bg-gray-50 transition-colors duration-300">
+                        <button className="px-6 py-3 border border-blue-200 text-blue-600 font-semibold rounded-lg hover:bg-blue-50 transition-colors duration-300">
                           View Portfolio
                         </button>
                       </div>
@@ -156,7 +156,7 @@ const ServicesSlider = () => {
           <div className="flex justify-center items-center mt-8 space-x-4">
             <button
               ref={prevRef}
-              className="w-12 h-12 rounded-full bg-white shadow-md flex items-center justify-center text-gray-700 hover:bg-[#C2DB62] hover:text-white transition-colors duration-300"
+              className="w-12 h-12 rounded-full bg-white shadow-md flex items-center justify-center text-gray-700 hover:bg-blue-600 hover:text-white transition-colors duration-300"
               aria-label="Previous service"
             >
               <ChevronLeft className="w-6 h-6" />
@@ -166,7 +166,7 @@ const ServicesSlider = () => {
             
             <button
               ref={nextRef}
-              className="w-12 h-12 rounded-full bg-white shadow-md flex items-center justify-center text-gray-700 hover:bg-[#C2DB62] hover:text-white transition-colors duration-300"
+              className="w-12 h-12 rounded-full bg-white shadow-md flex items-center justify-center text-gray-700 hover:bg-blue-600 hover:text-white transition-colors duration-300"
               aria-label="Next service"
             >
               <ChevronRight className="w-6 h-6" />
@@ -188,7 +188,7 @@ const ServicesSlider = () => {
         }
         
         .service-bullet-active {
-          background: #C2DB62;
+          background: #2563EB;
           width: 32px;
           border-radius: 8px;
         }

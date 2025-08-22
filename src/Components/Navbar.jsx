@@ -1,205 +1,219 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState, useEffect } from "react";
+import { Menu, X, Code, ChevronDown, MessageCircle, Phone, User } from "lucide-react";
 
 const Navbar = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [activeSubmenu, setActiveSubmenu] = useState(null);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
+      const isScrolled = window.scrollY > 10;
+      setScrolled(isScrolled);
     };
-    
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navItems = ['Home', 'About', 'Services', 'Portfolio', 'Contact'];
-
-  // Animation variants
-  const containerVariants = {
-    hidden: { opacity: 0, y: -50 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5,
-        ease: "easeOut",
-        when: "beforeChildren",
-        staggerChildren: 0.1
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: -20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.4,
-        ease: "easeOut"
-      }
-    }
-  };
-
-  const mobileMenuVariants = {
-    closed: {
-      opacity: 0,
-      height: 0,
-      transition: {
-        duration: 0.3,
-        ease: "easeInOut"
-      }
+  const navItems = [
+    { 
+      name: "Services", 
+      href: "#services",
+      submenu: [
+        { name: "Web Development", href: "#web-dev" },
+        { name: "Mobile Apps", href: "#mobile" },
+        { name: "Cloud Solutions", href: "#cloud" },
+        { name: "UI/UX Design", href: "#design" },
+        { name: "DevOps", href: "#devops" },
+      ]
     },
-    open: {
-      opacity: 1,
-      height: "auto",
-      transition: {
-        duration: 0.4,
-        ease: "easeOut",
-        when: "beforeChildren",
-        staggerChildren: 0.1
-      }
-    }
-  };
-
-  const mobileItemVariants = {
-    closed: { opacity: 0, x: -20 },
-    open: { opacity: 1, x: 0 }
-  };
+    { 
+      name: "Solutions", 
+      href: "#solutions",
+      submenu: [
+        { name: "Enterprise Software", href: "#enterprise" },
+        { name: "E-Commerce", href: "#ecommerce" },
+        { name: "CRM Systems", href: "#crm" },
+        { name: "Data Analytics", href: "#analytics" },
+      ]
+    },
+    { name: "Portfolio", href: "#portfolio" },
+    { name: "About", href: "#about" },
+    { name: "Careers", href: "#careers" },
+  ];
 
   return (
-    <motion.nav
-      initial="hidden"
-      animate="visible"
-      variants={containerVariants}
+    <nav
       className={`fixed w-full z-50 transition-all duration-300 ${
-        isScrolled 
-          ? 'bg-white shadow-lg py-3' 
-          : 'bg-white py-5'
+        scrolled
+          ? "bg-white shadow-lg py-2"
+          : "bg-white/95 backdrop-blur-md py-4"
       }`}
     >
-      <div className="container mx-auto px-4 md:px-6 flex justify-between items-center">
-        {/* Logo */}
-        <motion.div 
-          variants={itemVariants}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          className="flex items-center space-x-2 cursor-pointer"
-        >
-          <div className="w-10 h-10 bg-[#C2DB62] rounded-lg flex items-center justify-center">
-            <span className="text-black font-bold text-xl">M</span>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16">
+          {/* Logo */}
+          <div className="flex-shrink-0 flex items-center">
+            <div className="flex items-center">
+              <div className="w-10 h-10 rounded-lg bg-blue-600 flex items-center justify-center mr-3">
+                <Code className="h-6 w-6 text-white" />
+              </div>
+              <div>
+                <span className="text-xl font-bold text-gray-900">Krishna</span>
+                <span className="text-xl font-bold text-blue-600">Software</span>
+              </div>
+            </div>
           </div>
-          <span className="text-xl font-bold text-black">ModernNav</span>
-        </motion.div>
 
-        {/* Desktop Navigation */}
-        <motion.ul 
-          variants={containerVariants}
-          className="hidden md:flex items-center space-x-8"
-        >
-          {navItems.map((item, index) => (
-            <motion.li 
-              key={index}
-              variants={itemVariants}
-              whileHover={{ y: -2 }}
-              whileTap={{ y: 0 }}
-            >
+          {/* Desktop Navigation */}
+          <div className="hidden md:block">
+            <div className="ml-10 flex items-baseline space-x-6">
               <a
-                href={`#${item.toLowerCase()}`}
-                className="text-gray-800 hover:text-[#C2DB62] font-medium transition-colors duration-300 relative group"
+                href="#home"
+                className="text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
               >
-                {item}
-                <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-[#C2DB62] transition-all duration-300 group-hover:w-full"></span>
+                Home
               </a>
-            </motion.li>
-          ))}
-          
-          {/* CTA Button */}
-          <motion.li variants={itemVariants}>
-            <motion.button
-              whileHover={{ 
-                scale: 1.05,
-                backgroundColor: "#b0cc47",
-                transition: { duration: 0.2 }
-              }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-[#C2DB62] text-black px-6 py-2 rounded-full font-semibold shadow-md hover:shadow-lg transition-shadow duration-300"
-            >
-              Get Started
-            </motion.button>
-          </motion.li>
-        </motion.ul>
-
-        {/* Mobile Menu Button */}
-        <motion.button
-          variants={itemVariants}
-          whileTap={{ scale: 0.9 }}
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="md:hidden text-gray-800 focus:outline-none"
-          aria-label="Toggle menu"
-        >
-          {!isMenuOpen ? (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              className="w-6 h-6 flex flex-col justify-center space-y-1"
-            >
-              <span className="block w-6 h-0.5 bg-black"></span>
-              <span className="block w-6 h-0.5 bg-black"></span>
-              <span className="block w-4 h-0.5 bg-black"></span>
-            </motion.div>
-          ) : (
-            <motion.div
-              initial={{ rotate: 0, opacity: 0 }}
-              animate={{ rotate: 180, opacity: 1 }}
-              className="text-2xl"
-            >
-              ✕
-            </motion.div>
-          )}
-        </motion.button>
-      </div>
-
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {isMenuOpen && (
-          <motion.div
-            variants={mobileMenuVariants}
-            initial="closed"
-            animate="open"
-            exit="closed"
-            className="md:hidden bg-white shadow-lg overflow-hidden"
-          >
-            <ul className="px-4 py-6 space-y-6">
-              {navItems.map((item, index) => (
-                <motion.li
-                  key={index}
-                  variants={mobileItemVariants}
+              
+              {navItems.map((item) => (
+                <div 
+                  key={item.name} 
+                  className="relative group"
+                  onMouseEnter={() => setActiveSubmenu(item.name)}
+                  onMouseLeave={() => setActiveSubmenu(null)}
                 >
                   <a
-                    href={`#${item.toLowerCase()}`}
-                    className="text-gray-800 font-medium text-lg block py-2"
-                    onClick={() => setIsMenuOpen(false)}
+                    href={item.href}
+                    className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 flex items-center"
                   >
-                    {item}
+                    {item.name}
+                    {item.submenu && <ChevronDown className="ml-1 h-4 w-4" />}
                   </a>
-                </motion.li>
+                  
+                  {/* Submenu Dropdown */}
+                  {item.submenu && activeSubmenu === item.name && (
+                    <div className="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+                      <div className="py-1">
+                        {item.submenu.map((subItem) => (
+                          <a
+                            key={subItem.name}
+                            href={subItem.href}
+                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-150"
+                          >
+                            {subItem.name}
+                          </a>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
               ))}
-              <motion.li variants={mobileItemVariants}>
-                <motion.button
-                  whileTap={{ scale: 0.95 }}
-                  className="w-full bg-[#C2DB62] text-black px-6 py-3 rounded-full font-semibold shadow-md"
+            </div>
+          </div>
+
+          {/* Right side buttons - Desktop */}
+          <div className="hidden md:block">
+            <div className="ml-4 flex items-center md:ml-6 space-x-4">
+              <a
+                href="#contact"
+                className="flex items-center text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
+              >
+                <MessageCircle className="h-4 w-4 mr-1" />
+                Contact
+              </a>
+              <a
+                href="#get-quote"
+                className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200 flex items-center"
+              >
+                <Phone className="h-4 w-4 mr-1" />
+                Get Quote
+              </a>
+            </div>
+          </div>
+
+          {/* Mobile menu button */}
+          <div className="md:hidden flex items-center">
+            <a
+              href="#get-quote"
+              className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 mr-4 flex items-center"
+            >
+              <Phone className="h-4 w-4 mr-1" />
+            </a>
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-blue-600 focus:outline-none"
+              aria-expanded="false"
+            >
+              <span className="sr-only">Open main menu</span>
+              {isOpen ? (
+                <X className="block h-6 w-6" />
+              ) : (
+                <Menu className="block h-6 w-6" />
+              )}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile Navigation */}
+      {isOpen && (
+        <div className="md:hidden bg-white shadow-xl">
+          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <a
+              href="#home"
+              className="text-blue-600 block px-3 py-2 rounded-md text-base font-medium"
+            >
+              Home
+            </a>
+            
+            {navItems.map((item) => (
+              <div key={item.name}>
+                <a
+                  href={item.href}
+                  className="text-gray-700 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium"
+                  onClick={() => item.submenu && setActiveSubmenu(
+                    activeSubmenu === item.name ? null : item.name
+                  )}
                 >
-                  Get Started
-                </motion.button>
-              </motion.li>
-            </ul>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </motion.nav>
+                  <div className="flex justify-between items-center">
+                    {item.name}
+                    {item.submenu && (
+                      <ChevronDown className={`h-4 w-4 transition-transform ${
+                        activeSubmenu === item.name ? 'rotate-180' : ''
+                      }`} />
+                    )}
+                  </div>
+                </a>
+                
+                {/* Mobile Submenu */}
+                {item.submenu && activeSubmenu === item.name && (
+                  <div className="pl-6">
+                    {item.submenu.map((subItem) => (
+                      <a
+                        key={subItem.name}
+                        href={subItem.href}
+                        className="block px-3 py-2 text-sm text-gray-600 hover:text-blue-600 rounded-md"
+                      >
+                        {subItem.name}
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))}
+            
+            <a
+              href="#contact"
+              className="text-gray-700 hover:text-blue-600  px-3 py-2 rounded-md text-base font-medium flex items-center"
+            >
+              <MessageCircle className="h-4 w-4 mr-2" />
+              Contact
+            </a>
+          </div>
+        </div>
+      )}
+    </nav>
   );
 };
 

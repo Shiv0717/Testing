@@ -21,8 +21,8 @@ const Footer = () => {
           {/* Company Info */}
           <div className="lg:col-span-1">
             <div className="flex items-center mb-6">
-              <div className="w-10 h-10 bg-[#C2DB62] rounded-lg flex items-center justify-center mr-3">
-                <span className="text-gray-900 font-bold text-xl">K</span>
+              <div className="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center mr-3">
+                <span className="text-white font-bold text-xl">K</span>
               </div>
               <span className="text-xl font-bold">Krishna Software</span>
             </div>
@@ -31,18 +31,15 @@ const Footer = () => {
               We craft experiences that drive growth and success.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-[#C2DB62] hover:text-gray-900 transition-colors duration-300">
-                <Facebook className="w-5 h-5" />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-[#C2DB62] hover:text-gray-900 transition-colors duration-300">
-                <Twitter className="w-5 h-5" />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-[#C2DB62] hover:text-gray-900 transition-colors duration-300">
-                <Instagram className="w-5 h-5" />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-[#C2DB62] hover:text-gray-900 transition-colors duration-300">
-                <Linkedin className="w-5 h-5" />
-              </a>
+              {[Facebook, Twitter, Instagram, Linkedin].map((Icon, i) => (
+                <a
+                  key={i}
+                  href="#"
+                  className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-500 hover:text-white transition-colors duration-300"
+                >
+                  <Icon className="w-5 h-5" />
+                </a>
+              ))}
             </div>
           </div>
 
@@ -50,14 +47,14 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold mb-6 relative inline-block">
               Quick Links
-              <span className="absolute -bottom-2 left-0 w-10 h-0.5 bg-[#C2DB62]"></span>
+              <span className="absolute -bottom-2 left-0 w-10 h-0.5 bg-blue-500"></span>
             </h3>
             <ul className="space-y-3">
               {['Home', 'About', 'Services', 'Portfolio', 'Team', 'Contact'].map((item) => (
                 <li key={item}>
                   <a 
                     href="#" 
-                    className="text-gray-400 hover:text-[#C2DB62] transition-colors duration-300"
+                    className="text-gray-400 hover:text-blue-500 transition-colors duration-300"
                   >
                     {item}
                   </a>
@@ -70,14 +67,14 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold mb-6 relative inline-block">
               Services
-              <span className="absolute -bottom-2 left-0 w-10 h-0.5 bg-[#C2DB62]"></span>
+              <span className="absolute -bottom-2 left-0 w-10 h-0.5 bg-blue-500"></span>
             </h3>
             <ul className="space-y-3">
               {['Web Development', 'Mobile Apps', 'UI/UX Design', 'E-Commerce', 'Digital Marketing', 'Cloud Solutions'].map((service) => (
                 <li key={service}>
                   <a 
                     href="#" 
-                    className="text-gray-400 hover:text-[#C2DB62] transition-colors duration-300"
+                    className="text-gray-400 hover:text-blue-500 transition-colors duration-300"
                   >
                     {service}
                   </a>
@@ -90,19 +87,19 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold mb-6 relative inline-block">
               Get in Touch
-              <span className="absolute -bottom-2 left-0 w-10 h-0.5 bg-[#C2DB62]"></span>
+              <span className="absolute -bottom-2 left-0 w-10 h-0.5 bg-blue-500"></span>
             </h3>
             <div className="space-y-4 mb-6">
               <div className="flex items-start">
-                <MapPin className="w-5 h-5 text-[#C2DB62] mr-3 mt-1 flex-shrink-0" />
+                <MapPin className="w-5 h-5 text-blue-500 mr-3 mt-1 flex-shrink-0" />
                 <p className="text-gray-400">123 Tech Street, Innovation City, IN 560001</p>
               </div>
               <div className="flex items-center">
-                <Phone className="w-5 h-5 text-[#C2DB62] mr-3 flex-shrink-0" />
+                <Phone className="w-5 h-5 text-blue-500 mr-3 flex-shrink-0" />
                 <p className="text-gray-400">+91 98765 43210</p>
               </div>
               <div className="flex items-center">
-                <Mail className="w-5 h-5 text-[#C2DB62] mr-3 flex-shrink-0" />
+                <Mail className="w-5 h-5 text-blue-500 mr-3 flex-shrink-0" />
                 <p className="text-gray-400">info@krishnasoftware.com</p>
               </div>
             </div>
@@ -114,9 +111,9 @@ const Footer = () => {
                 <input 
                   type="email" 
                   placeholder="Your email"
-                  className="px-4 py-2 bg-gray-800 text-white rounded-l-lg focus:outline-none focus:ring-2 focus:ring-[#C2DB62] w-full"
+                  className="px-4 py-2 bg-gray-800 text-white rounded-l-lg focus:outline-none focus:ring-2 focus:ring-blue-500 w-full"
                 />
-                <button className="bg-[#C2DB62] text-gray-900 px-4 rounded-r-lg hover:bg-[#b0cc47] transition-colors duration-300">
+                <button className="bg-blue-500 text-white px-4 rounded-r-lg hover:bg-blue-600 transition-colors duration-300">
                   <Send className="w-5 h-5" />
                 </button>
               </div>
@@ -132,14 +129,14 @@ const Footer = () => {
             </p>
             <div className="flex items-center text-gray-400 text-sm">
               <span>Made with</span>
-              <Heart className="w-4 h-4 mx-1 text-[#C2DB62] fill-current" />
+              <Heart className="w-4 h-4 mx-1 text-blue-500 fill-current" />
               <span>by Krishna Software Team</span>
             </div>
             <div className="flex space-x-6 mt-4 md:mt-0">
-              <a href="#" className="text-gray-400 hover:text-[#C2DB62] text-sm transition-colors duration-300">
+              <a href="#" className="text-gray-400 hover:text-blue-500 text-sm transition-colors duration-300">
                 Privacy Policy
               </a>
-              <a href="#" className="text-gray-400 hover:text-[#C2DB62] text-sm transition-colors duration-300">
+              <a href="#" className="text-gray-400 hover:text-blue-500 text-sm transition-colors duration-300">
                 Terms of Service
               </a>
             </div>

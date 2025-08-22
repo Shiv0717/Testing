@@ -31,12 +31,16 @@ const Faqs = () => {
   };
 
   return (
-    <section className="bg-gray-50 py-16 px-6">
+    <section className="bg-gradient-to-b from-blue-50 to-white py-16 px-6">
       <div className="max-w-7xl mx-auto">
         {/* Heading */}
-        <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-10">
-          Frequently Asked Questions
+        <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-4">
+          Frequently Asked <span className="text-blue-600">Questions</span>
         </h2>
+        <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+          Find answers to the most common questions about our services and
+          processes. Still need help? <a href="#contact" className="text-blue-600 font-medium hover:underline">Contact us</a>.
+        </p>
 
         {/* FAQs */}
         <div className="space-y-4">
@@ -44,14 +48,14 @@ const Faqs = () => {
             <div
               key={index}
               onClick={() => toggleFAQ(index)}
-              className="bg-white rounded-xl shadow-md p-5 cursor-pointer transition-all duration-300 border border-gray-100 hover:shadow-lg"
+              className="bg-white rounded-xl border border-gray-200 shadow-sm p-5 cursor-pointer transition-all duration-300 hover:shadow-md"
             >
               <div className="flex justify-between items-center">
-                <h3 className="text-lg font-semibold text-gray-800">
+                <h3 className="text-lg font-semibold text-gray-900">
                   {faq.question}
                 </h3>
                 <ChevronDown
-                  className={`w-5 h-5 text-gray-500 transform transition-transform duration-300 ${
+                  className={`w-6 h-6 text-blue-600 transform transition-transform duration-300 ${
                     openIndex === index ? "rotate-180" : ""
                   }`}
                 />
