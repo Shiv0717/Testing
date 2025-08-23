@@ -6,6 +6,8 @@ import Testimonials from '../Components/Testimonials';
 import CTA from '../Components/CTA';
 import Faqs from '../Components/Faqs';
 import Achievements from '../Components/Achievements';
+import Tools from '../Components/Tools';
+import CompanySlider from '../Components/CompanySlider';
 
 const Home = () => {
   return (
@@ -13,7 +15,9 @@ const Home = () => {
       <HeroSection/>
       <Achievements/>
       <Services/>
+      <Tools/>
       <AboutSection/>
+      <CompanySlider/>
       <Testimonials/>
       <Faqs/>
     </div>
