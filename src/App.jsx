@@ -9,11 +9,9 @@ import {
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Layout from "./layout/Layout";
+import SoftwareDevelopment from "./Components/SoftwareDevelopment";
+import ContactPage from "./pages/ContactPage";
 
-// ✅ Layout Component
-
-
-// ✅ Router setup
 const router = createBrowserRouter([
   {
     path: "/",
@@ -21,11 +19,12 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <Home /> },
       { path: "about", element: <About /> },
+      { path: "contact", element: <ContactPage/> },
+      { path: "services", element:<SoftwareDevelopment/>},
     ],
   },
 ]);
 
-// ✅ App
 const App = () => {
   return <RouterProvider router={router} />;
 };

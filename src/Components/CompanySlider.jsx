@@ -11,6 +11,11 @@ const CompanySlider = () => {
     { id: 3, logo: "https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" },
     { id: 4, logo: "https://upload.wikimedia.org/wikipedia/commons/5/51/Google.png" },
     { id: 5, logo: "https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" },
+    { id: 1, logo: "https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" },
+    { id: 2, logo: "https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" },
+    { id: 3, logo: "https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" },
+    { id: 4, logo: "https://upload.wikimedia.org/wikipedia/commons/5/51/Google.png" },
+    { id: 5, logo: "https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" },
   ];
 
   return (
@@ -41,7 +46,7 @@ const CompanySlider = () => {
               <img
                 src={company.logo}
                 alt={`Company ${company.id}`}
-                className="h-12 object-contain grayscale hover:grayscale-0 transition duration-300"
+                className="h-12 object-contain  transition duration-300"
               />
             </div>
           </SwiperSlide>

@@ -28,7 +28,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 py-16 px-4 md:px-8 relative overflow-hidden">
+    <section className=" flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 py-16 px-4 md:px-8 relative overflow-hidden">
       {/* Background elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
         <div className="absolute top-20 left-10 w-72 h-72 bg-blue-200 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob"></div>
@@ -36,7 +36,7 @@ const HeroSection = () => {
         <div className="absolute -bottom-8 left-20 w-72 h-72 bg-cyan-200 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-4000"></div>
       </div>
 
-      <div className="container mx-auto max-w-6xl relative z-10">
+      <div className="container mx-auto max-w-7xl relative z-10">
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -72,7 +72,7 @@ const HeroSection = () => {
               <motion.button
                 whileHover={{ scale: 1.05, backgroundColor: "#2563eb" }}
                 whileTap={{ scale: 0.95 }}
-                className="px-8 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-2"
+                className="px-8 py-3 bg-blue-600 text-white  font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-2"
               >
                 Get Started
                 <Zap className="w-5 h-5" />
@@ -169,22 +169,7 @@ const HeroSection = () => {
         </motion.div>
       </div>
       
-      {/* Scroll indicator */}
-      <motion.div 
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5, duration: 0.5 }}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-      >
-        <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ repeat: Infinity, duration: 1.5 }}
-          className="flex flex-col items-center text-blue-600"
-        >
-          <span className="text-sm mb-2">Scroll Down</span>
-          <ArrowDown className="w-5 h-5" />
-        </motion.div>
-      </motion.div>
+      
 
       <style jsx>{`
         @keyframes blob {
